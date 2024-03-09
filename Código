@@ -1,0 +1,28 @@
+def ler_numeros(nome_arquivo):
+    with open(nome_arquivo, "r") as file:
+        numeros = file.readlines()
+    numeros = [int(numero.strip()) for numero in numeros if numero.strip()]
+    return numeros
+
+numeros_sefaz = ler_numeros("sefaz.txt")
+numeros_cloud = ler_numeros("cloud.txt")
+
+set_sefaz = set(numeros_sefaz)
+set_cloud = set(numeros_cloud)
+
+#numeros_repetidos = set_sefaz.intersection(set_cloud).
+
+numeros_exclusivos_sefaz = set_sefaz.difference(set_cloud)
+numeros_exclusivos_cloud = set_cloud.difference(set_sefaz)
+
+if numeros_exclusivos_sefaz:
+    print("Numeros exclusivos na sefaz:", numeros_exclusivos_sefaz)
+else:
+    print("Não há números exclusivos na sefaz")
+
+if numeros_exclusivos_cloud:
+    print("Numeros exclusivos no cloud:", numeros_exclusivos_cloud)
+else:
+    print("Não há números exclusivos no cloud")
+
+input("Pressione Enter para sair...")
